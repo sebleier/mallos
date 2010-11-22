@@ -1,13 +1,8 @@
 #!/usr/bin/env python
 
 import httplib2
-import sys
-import os
-import signal
-import time
 from lxml.html import fromstring
-from optparse import OptionParser
-from multiprocessing import Process, Queue, Value
+from multiprocessing import Process, Queue
 from Queue import Empty
 from urlparse import urlparse
 import logbook
@@ -112,7 +107,7 @@ class Mallos(object):
         """
         try:
             html = fromstring(content)
-        except Exception, e:
+        except Exception:
             return
         html.make_links_absolute(base_url, resolve_base_href=True)
         urls = []
